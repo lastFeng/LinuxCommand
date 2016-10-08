@@ -1,0 +1,36 @@
+命令功能：
+  列出文件系统的整体磁盘使用量
+命令格式：
+  df [-ahikHTm] [文件或目录名]
+命令参数：
+  -a  列出所有的文件系统，包括系统特有的 /proc 等文件系统
+  -k  以KBytes的容量显示各文件系统
+  -m  以MBytes的容量显示各文件系统
+  -h  以人们较易阅读的GBytes、MBytes、KBytes等格式自行显示
+  -H  以 M=1000K 取代 M=1024K 的进位方式
+  -T  连同该 partition 的 filesystem 名称（如xfs）也列出
+  -i  不用磁盘容量，而以inode的数量来显示
+  
+  
+例子：
+  1.将系统所有的 filesystem 列出来
+  sugar116@ubuntu:~$ df
+  Filesystem     1K-blocks     Used Available Use% Mounted on
+  udev             1532400        0   1532400   0% /dev
+  tmpfs             310016     9212    300804   3% /run
+  /dev/sda1       19478204 11110116   7355608  61% /
+  tmpfs            1550064      208   1549856   1% /dev/shm
+  tmpfs               5120        4      5116   1% /run/lock
+  tmpfs            1550064        0   1550064   0% /sys/fs/cgroup
+  tmpfs             310016       56    309960   1% /run/user/1000
+  
+  2.将容量结果以易读的容量格式显示出来
+  sugar116@ubuntu:~$ df -h
+  Filesystem      Size  Used Avail Use% Mounted on
+  udev            1.5G     0  1.5G   0% /dev
+  tmpfs           303M  9.0M  294M   3% /run
+  /dev/sda1        19G   11G  7.1G  61% /
+  tmpfs           1.5G  208K  1.5G   1% /dev/shm
+  tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+  tmpfs           1.5G     0  1.5G   0% /sys/fs/cgroup
+  tmpfs           303M   56K  303M   1% /run/user/1000
