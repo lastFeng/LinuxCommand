@@ -1,0 +1,24 @@
+命令功能：
+  可以用来移动文件或者将文件改名
+命令格式：
+  mv [option] 源文件或目录 目标文件或目录
+命令参数：
+  -b  若需要覆盖文件，则覆盖前先行备份
+  -f  强制执行，如果目标文件已经存在，不会询问而直接覆盖
+  -i  若目标文件已经存在时，会询问是否覆盖
+  -u  若目标文件已经存在，且源文件比较新，才会更新
+  -t  指定mv的目标目录，该选项适用于移动多个源文件到一个目录的情况，此时目标目录在前，源文件在后
+  
+实例：
+  1.文件改名
+  sugar116@ubuntu:~/Desktop$ mkdir c.txt
+  sugar116@ubuntu:~/Desktop$ mv c.txt c.log
+  sugar116@ubuntu:~/Desktop$ ls
+  c  c.log  vbirds  桌面
+  
+  2.移动文件
+  sugar116@ubuntu:~/Desktop$ mv c.log ~
+  sugar116@ubuntu:~/Desktop$ ls ~ | grep c.log
+  c.log
+
+
