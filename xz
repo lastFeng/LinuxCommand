@@ -1,0 +1,46 @@
+命令功能：
+  压缩与解压缩文件
+命令格式：
+  xz [-dtlkc#] 文件
+命令参数：
+  -d  解压缩
+  -t  测试文件的完整性
+  -l  列出压缩文件的相关信息
+  -k  保留原本的文件不删除
+  -c  将数据有屏幕输出
+  -#  # 为数字，表示压缩比的效果不同  
+  
+实例：
+  1.压缩文件 查看压缩效率
+  sugar116@ubuntu:~/Desktop$ xz -v tt.txt 
+  tt.txt (1/1)
+    100 %             544 B / 1,332 B = 0.408    
+   
+  压缩之后，tt.txt被删除
+  sugar116@ubuntu:~/Desktop$ ls
+  c  py_http  shell  tt.txt.xz  vbirds  桌面
+
+    
+  2.列出压缩文件的信息，然后读取压缩文件的内容
+  sugar116@ubuntu:~/Desktop$ xz -l tt.txt.xz 
+  Strms  Blocks   Compressed Uncompressed  Ratio  Check   Filename
+      1       1        544 B      1,332 B  0.408  CRC64   tt.txt.xz
+  sugar116@ubuntu:~/Desktop$ xzcat tt.txt.xz 
+  MemTotal:        3100128 kB
+  MemFree:          417496 kB
+  MemAvailable:    2004896 kB
+  Buffers:          296400 kB
+  Cached:          1505484 kB ......（内容过多，省略）
+  
+  3. 解压缩
+  sugar116@ubuntu:~/Desktop$ xz -d tt.txt.xz 
+  sugar116@ubuntu:~/Desktop$ ls
+  c  py_http  shell  tt.txt  vbirds  桌面
+  解压缩之后tt.txt.xz被删除
+  
+  4.保留原文件
+  sugar116@ubuntu:~/Desktop$ xz -k tt.txt 
+  sugar116@ubuntu:~/Desktop$ ls
+  c  py_http  shell  tt.txt  tt.txt.xz  vbirds  桌面
+
+    
