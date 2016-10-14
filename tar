@@ -1,0 +1,46 @@
+命令功能：
+  压缩与解压缩文件或目录（功能强大）
+命令格式：
+  tar [-z|-j|-J] [cv] [-f ] filename/dirname ...     压缩文件
+  tar [-z|-j|-J] [tv] [-f 已有的tar 文件]             查看文件
+  tar [-z|-j|-J] [xv] [-f 已有的tar 文件] [-C 目录]   解压缩文件
+  
+命令参数：
+  -c  建立打包文件，可搭配-v 来查看过程中被打包的文件
+  -t  查看打包文件的内容含有哪些子文件，主要在于查看文件名
+  -x  解压缩的功能，可搭配 -C 在特定的目录解压
+    （-c -t  -x  不能同时出现）
+  -z  透过gzip 的支持进行压缩/解压：此时文件名最好是：*.tar.gz
+  -j  透过 bzip2 的支持进行压缩/解压： 此时的文件名最好是：*.tar.gz2
+  -J  透过 xz 的支持进行压缩/解压：此时的文件名最好是：*.tar.xz
+    （-z -j  -J  不可以同时出现）
+  -v  在压缩/解压的过程中，将正在处理的文件名显示出来
+  -f filename -f 后面要立刻接要被处理的文件名
+  -C 目录：  在特定目录中的解压缩参数
+  -p（小写）  保留备份数据的原本权限与属性，常用于备份（-c）重要的配置文件
+  -P（大写）  保留绝对路径
+  --exclude=FILE  压缩过程中，跳过FILE
+  
+  注意： 该压缩或解压不会删除原文件
+  
+常用命令记忆：
+  压缩：tar -jcv -f name.tar.bz2 filename/dirname（要压缩的文件）
+  查询：tar -jtv -f name.tar.bz2
+  解压：tar -jxv -f name.tar.bz2 -C dir
+  （同样可将 -j 换位 -z 或 -J ，注意修改后缀名）
+  
+实例：（选用其中一种支持格式：gzip）
+  1.压缩文件
+  sugar116@ubuntu:~/Desktop$ tar -jcv -f tt.tar.gzip tt.txt 
+  tt.txt
+  sugar116@ubuntu:~/Desktop$ ls
+  c  py_http  shell  tt.tar.gzip  tt.txt  vbirds  桌面
+
+  2.查看压缩文件中的内容
+  sugar116@ubuntu:~/Desktop$ tar -jtv -f tt.tar.gzip 
+  -rw-rw-r-- sugar116/sugar116 1332 2016-10-13 21:50 tt.txt
+  
+  3.解压缩文件到目录
+  sugar116@ubuntu:~/Desktop$ tar -jxv -f tt.tar.gzip -C /tmp
+  tt.txt
+  
