@@ -1,0 +1,36 @@
+命令功能：
+  把指定的输入文件拷贝到指定的输出文件中，并且在拷贝的过程中可以进行格式化转换（最大功能可以进行备份）
+命令格式：
+  dd [option]
+命令参数：
+  if=file
+  of=file
+  ibs=BYTES 一次读取bytes字节，即读入缓冲区的字节数
+  skip=blocks 跳过读入缓冲区开头的ibs*blocks块
+  obs=bytes 一次写入bytes字节，即写入缓冲区的字节数
+  bs=bytes  同时设置读/写缓冲区的字节数（等于设置ibs和obs），如未指定则预设是512bytes
+  cbs=bytes  一次转换bytes字节
+  count=N 只拷贝输入的N个输入blocks
+  conv= ascii 把EBCDIC码转换成ASCII码
+  conv=ebcdic 把ASCII码转化成EBCDIC码
+  conv=ibm  把ASCII码转换为alternate EBCDIC码
+  
+实例：
+  1.备份
+  sugar116@ubuntu:~/Desktop$ dd if=./shell of=./shell.back
+  dd: error reading './shell': Is a directory
+  0+0 records in
+  0+0 records out
+  0 bytes copied, 0.00498969 s, 0.0 kB/s
+  sugar116@ubuntu:~/Desktop$ ls
+  c  py_http  shell  shell.back  tt.tar.gzip  tt.txt  vbirds  桌面
+  
+  2.还原
+  sugar116@ubuntu:~/Desktop$ dd if=shell.back of=sshell
+  0+0 records in
+  0+0 records out
+  0 bytes copied, 0.00493174 s, 0.0 kB/s
+  sugar116@ubuntu:~/Desktop$ ls
+  c  py_http  shell  shell.back  sshell  tt.tar.gzip  tt.txt  vbirds  桌面
+  
+ 
