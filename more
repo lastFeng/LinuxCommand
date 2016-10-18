@@ -1,0 +1,42 @@
+命令功能：
+  功能类似于cat，但more会以一页一页的显示方便使用者逐页阅读
+命令格式：
+  more [option] [file...]
+参数：
+  -d  用帮助说明替换铃声提示
+  -c  从顶部清屏，然后显示    
+  -p  通过清除窗口来进行文件换页
+  -s  把连续多的空行显示为一行
+  -u  把文件内容中的下划线去掉
+  -<number> 每次显示文件内容n行
+  +<number> 从文件第n行开始显示
+  +/<string> 从匹配到的字符前两行开始显示
+  -V  显示版本信息
+  
+实例：
+  1. 每次显示2行
+  sugar116@ubuntu:~/Desktop/shell/contral$ more -2 if.sh 
+  #! /bin/bash
+
+  --More--(7%)
+  
+  2.从第三行中显示
+  sugar116@ubuntu:~/Desktop/shell/contral$ more +3 if.sh 
+  #find the current user name
+  tst=$(env | grep "USER=" | cut -d "=" -f 2)
+  #the user is root or not?
+  if [ "$tst" == "root" ];then
+    echo "The current user is root!"
+  fi
+  
+  3.从if字符开始显示
+  sugar116@ubuntu:~/Desktop/shell/contral$ more +/if if.sh 
+
+  ...skipping
+  tst=$(env | grep "USER=" | cut -d "=" -f 2)
+  #the user is root or not?
+  if [ "$tst" == "root" ];then
+    echo "The current user is root!"
+  fi
+
+
