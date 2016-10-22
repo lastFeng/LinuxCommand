@@ -1,0 +1,46 @@
+命令功能：
+  locate 让使用者可以很快速的搜寻档案系统内是否有指定的档案;
+  其方法是先建立一个包括系统内所有档案名称及路径的数据库，之后当寻找时就只需查询这个数据库，而不必实际深入档案系统之中了。
+  在一般的 distribution 之中，数据库的建立都被放在 crontab 中自动执行。
+命令格式：
+  locate [option] [pattern]
+参数：
+  -A，--all  仅显示匹配到的所有样式的项
+  -b，--basename   仅匹配路径的数据库名称
+  -c，--count  仅显示发现的项的个数
+  -d，--datebase DBPATH  使用DBPATH下的数据库来替换默认的数据库
+  -e，--existing   仅显示当前存在文件的项
+  -i，--ignore-case    匹配模式忽略大小写的区别
+  -l，--limit，-n LIMIT   限制输出的有限项
+  -m，--mmap   忽略，为了向后兼容
+  -q，--quiet  在读取数据库时报告没有错误的信息
+  -r    用基本的正则表达式来替换模式的搜索
+  -V    显示版本信息
+  -w    匹配完全路径名称（默认）
+ 
+实例：
+  1.查找和pwd相关的所有文件
+  sugar116@ubuntu:~$ locate pwd
+  /bin/pwd
+  /etc/.pwd.lock
+  /home/sugar116/.PyCharm2016.1/system/python_stubs/-1247972723/pwd.py
+  /home/sugar116/.PyCharm2016.1/system/python_stubs/-1247972723/spwd.py
+  /lib/modules/4.4.0-36-generic/kernel/drivers/watchdog/hpwdt.ko
+  ...（省略）
+  
+  2.搜索etc目录下所有以sh开头的文件
+  sugar116@ubuntu:~$ locate /etc/sh
+  /etc/shadow
+  /etc/shadow-
+  /etc/shells
+  
+  3.搜索etc目录下，所有以m开头的文件
+  sugar116@ubuntu:~$ locate /etc/m
+  /etc/machine-id
+  /etc/magic
+  /etc/magic.mime
+  /etc/mailcap
+  ...
+  
+  
+  
